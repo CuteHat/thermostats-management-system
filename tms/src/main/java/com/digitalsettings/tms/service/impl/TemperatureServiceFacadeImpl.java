@@ -21,6 +21,12 @@ public class TemperatureServiceFacadeImpl implements TemperatureServiceFacade {
     private final TemperatureDataService temperatureDataService;
     private final AlertService alertService;
 
+    /**
+     * Registers the temperature data for a specified thermostat and updates its state (e.g., critical status and alerts).
+     *
+     * @param thermostatId The ID of the thermostat for which the temperature data is being registered.
+     * @param request      The temperature data request containing the temperature value and timestamp.
+     */
     @Override
     @Transactional
     public void registerTemperatureData(Long thermostatId, TemperatureDataCreateRequest request) {
