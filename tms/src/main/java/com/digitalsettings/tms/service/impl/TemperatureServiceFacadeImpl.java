@@ -27,10 +27,14 @@ public class TemperatureServiceFacadeImpl implements TemperatureServiceFacade {
         ThermostatEntity thermostat = thermostatService.get(thermostatId);
 
         // register temperature data
-        temperatureDataService.create(thermostat, request);
+        TemperatureDataEntity newData = temperatureDataService.create(thermostat, request);
 
         // get latest temperature data, current temperature data might be outdated
         TemperatureDataEntity temperatureData = temperatureDataService.findLatestFor(thermostat);
+
+        // historical data, skipping rest of the logic
+        if (!newData.getId().equals(temperatureData.getId()))
+            return;
 
         // mark as critical if real temperature is above configured temperature
         if (thermostat.getConfiguredTemperature().compareTo(temperatureData.getTemperature()) < 0)

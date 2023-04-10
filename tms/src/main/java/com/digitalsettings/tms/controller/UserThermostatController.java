@@ -27,12 +27,6 @@ public class UserThermostatController {
         return ResponseEntity.ok(thermostats);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ThermostatDto> getThermostat(@PathVariable @Min(1) Long id) {
-        ThermostatDto thermostat = thermostatServiceFacade.get(id);
-        return ResponseEntity.ok(thermostat);
-    }
-
     @PostMapping
     public ResponseEntity<ThermostatDto> createThermostat(@Valid @RequestBody ThermostatCreateRequest request) {
         ThermostatDto createdThermostat = thermostatServiceFacade.create(request);
