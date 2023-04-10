@@ -1,0 +1,9 @@
+<div class="login-container">
+  <h1>Enter Access Token</h1>
+  <form (submit)="onSubmit()">
+    <mat-form-field>
+      <input matInput [(ngModel)]="accessToken" name="accessToken" placeholder="Access Token">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </form>
+</div>
