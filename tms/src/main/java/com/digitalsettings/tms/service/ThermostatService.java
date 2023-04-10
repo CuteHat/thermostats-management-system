@@ -4,6 +4,7 @@ import com.digitalsettings.tms.model.ThermostatCreateRequest;
 import com.digitalsettings.tms.persistence.entity.ThermostatEntity;
 import com.digitalsettings.tms.persistence.entity.UserEntity;
 import com.digitalsettings.tms.persistence.model.ThermostatListItemProjection;
+import org.springframework.data.domain.Page;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -26,4 +27,8 @@ public interface ThermostatService {
     boolean thresholdIsExceeded(ThermostatEntity thermostat, BigDecimal temperature);
 
     List<ThermostatListItemProjection> getThermostatListItemsByUserId(Long userId);
+
+    List<ThermostatEntity> getAll();
+
+    List<Long> getAllIds();
 }

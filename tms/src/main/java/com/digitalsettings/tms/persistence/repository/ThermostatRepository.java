@@ -15,4 +15,7 @@ public interface ThermostatRepository extends JpaRepository<ThermostatEntity, Lo
             "FROM ThermostatEntity t " +
             "WHERE t.user.id = :userId")
     List<ThermostatListItemProjection> findThermostatListItemsByUserId(Long userId);
+
+    @Query("SELECT t.id FROM ThermostatEntity t")
+    List<Long> findAllIds();
 }

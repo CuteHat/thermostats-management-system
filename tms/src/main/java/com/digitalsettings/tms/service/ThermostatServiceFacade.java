@@ -14,4 +14,8 @@ public interface ThermostatServiceFacade {
     ThermostatDto create(ThermostatCreateRequest request);
 
     void delete(Long id);
+
+    List<ThermostatDto> getAll();
+
+    List<Long> getAllIds();
 }

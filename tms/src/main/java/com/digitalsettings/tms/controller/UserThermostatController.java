@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/api/v1/user/thermostats")
 @RequiredArgsConstructor
 @Validated
-public class UserThermostatsController {
+public class UserThermostatController {
     private final ThermostatServiceFacade thermostatServiceFacade;
 
     @GetMapping

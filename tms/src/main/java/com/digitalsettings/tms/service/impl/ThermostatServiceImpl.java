@@ -83,4 +83,14 @@ public class ThermostatServiceImpl implements ThermostatService {
         return repository.findThermostatListItemsByUserId(userId);
     }
 
+    @Override
+    public List<ThermostatEntity> getAll() {
+        return repository.findAll();
+    }
+
+    @Override
+    public List<Long> getAllIds() {
+        return repository.findAllIds();
+    }
+
 }

@@ -44,4 +44,17 @@ public class ThermostatServiceFacadeImpl implements ThermostatServiceFacade {
         UserEntity requester = userService.findById(SecurityUtils.getAuthenticatedUserId());
         thermostatService.delete(id, requester);
     }
+
+    @Override
+    public List<ThermostatDto> getAll() {
+        return thermostatService.getAll()
+                .stream()
+                .map(ThermostatDto::from)
+                .toList();
+    }
+
+    @Override
+    public List<Long> getAllIds(){
+        return thermostatService.getAllIds();
+    }
 }

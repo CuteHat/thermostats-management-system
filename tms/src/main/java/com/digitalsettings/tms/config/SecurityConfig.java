@@ -49,6 +49,7 @@ public class SecurityConfig {
                     authCustomizer.requestMatchers("/api/v1/user/**").authenticated();
                     authCustomizer.requestMatchers("/api/v1/user/thermostats").authenticated();
                     authCustomizer.requestMatchers(new RegexRequestMatcher("/api/thermostats/\\d+/temperatures", HttpMethod.POST.toString())).hasAuthority("SCOPE_".concat(SCOPE.FEED_TEMPERATURE_DATA.name()));
+                    authCustomizer.requestMatchers("/api/v1/thermostats/**").authenticated();
                     authCustomizer.anyRequest().authenticated();
                 })
                 .cors().configurationSource(getCorsConfiguration()).and()
