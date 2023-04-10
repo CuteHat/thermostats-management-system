@@ -4,6 +4,7 @@ import com.digitalsettings.tms.model.ThermostatCreateRequest;
 import com.digitalsettings.tms.model.ThermostatDto;
 import com.digitalsettings.tms.model.ThermostatListItemDto;
 import com.digitalsettings.tms.service.ThermostatServiceFacade;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -33,9 +34,15 @@ public class UserThermostatController {
     }
 
     @PostMapping
-    public ResponseEntity<ThermostatDto> createThermostat(@RequestBody ThermostatCreateRequest request) {
+    public ResponseEntity<ThermostatDto> createThermostat(@Valid @RequestBody ThermostatCreateRequest request) {
         ThermostatDto createdThermostat = thermostatServiceFacade.create(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdThermostat);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ThermostatDto> createThermostat(@PathVariable @Min(1) Long id, @Valid @RequestBody ThermostatCreateRequest request) {
+        ThermostatDto updatedThermostat = thermostatServiceFacade.update(id, request);
+        return ResponseEntity.ok(updatedThermostat);
     }
 
     @DeleteMapping("/{id}")

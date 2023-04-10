@@ -40,6 +40,12 @@ public class ThermostatServiceFacadeImpl implements ThermostatServiceFacade {
     }
 
     @Override
+    public ThermostatDto update(Long id, ThermostatCreateRequest request) {
+        UserEntity requester = userService.findById(SecurityUtils.getAuthenticatedUserId());
+        return ThermostatDto.from(thermostatService.update(id, request, requester));
+    }
+
+    @Override
     public void delete(Long id) {
         UserEntity requester = userService.findById(SecurityUtils.getAuthenticatedUserId());
         thermostatService.delete(id, requester);
@@ -54,7 +60,7 @@ public class ThermostatServiceFacadeImpl implements ThermostatServiceFacade {
     }
 
     @Override
-    public List<Long> getAllIds(){
+    public List<Long> getAllIds() {
         return thermostatService.getAllIds();
     }
 }

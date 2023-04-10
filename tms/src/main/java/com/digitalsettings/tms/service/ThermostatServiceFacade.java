@@ -13,6 +13,8 @@ public interface ThermostatServiceFacade {
 
     ThermostatDto create(ThermostatCreateRequest request);
 
+    ThermostatDto update(Long id, ThermostatCreateRequest request);
+
     void delete(Long id);
 
     List<ThermostatDto> getAll();
